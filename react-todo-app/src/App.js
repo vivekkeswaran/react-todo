@@ -22,10 +22,11 @@ class App extends Component {
 
   addTodo(todoText) {
     let todo = this.state.todos.slice();
+    let nextId = this.state.nextId;
     todo.push({id: this.state.nextId, text: todoText});
     this.setState({
       todos: todo,
-      nextId: ++(this.state.nextId)
+      nextId: ++(nextId)
     })
   }
 
@@ -39,15 +40,17 @@ class App extends Component {
     return (
       <div className="App">
         <div className="Wrapper">
-          <Header/>
+          <Header className="title"/>
           <TodoInput todoText="" addTodo={this.addTodo}/>
-          <ul>
-            {
-              this.state.todos.map((todo)=>{
-                return <TodoItem todo={todo} key={todo.id} id={todo.id} removeTodo={this.removeTodo}/>
-              })
-            }
-          </ul>
+          <div className="todoWrapper" id="todoScroll">
+            <ul>
+              {
+                this.state.todos.map((todo)=>{
+                  return <TodoItem todo={todo} key={todo.id} id={todo.id} removeTodo={this.removeTodo}/>
+                })
+              }
+            </ul> 
+          </div>
         </div>
       </div>
     );

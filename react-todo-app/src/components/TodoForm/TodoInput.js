@@ -32,7 +32,12 @@ export default class TodoInput extends Component {
         return (
             <div className="todoFormContainer">
                 <input type="text" value={this.state.inputItem} onChange={this.fetchInput}/>
-                <button className="btn btn-primary" onClick={() => this.addTodo(this.state.inputItem)}>Submit</button>
+                <a className="btn btn-success" onClick={() => this.addTodo(this.state.inputItem)}>
+                    <span className="icon">
+                        <i className="fa fa-plus" aria-hidden="true"></i>
+                    </span>
+                    <span>Add</span>
+                </a>
             </div>
         );
     }

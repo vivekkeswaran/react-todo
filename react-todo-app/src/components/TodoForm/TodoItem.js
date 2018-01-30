@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 
 export default class TodoItem extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     removeTodo(id) {
         this.props.removeTodo(id);
     }
@@ -13,7 +9,13 @@ export default class TodoItem extends Component {
     render() {
         return (
         <div className="todoContainer"> 
-            <button className="btn btn-danger" onClick={() => this.removeTodo(this.props.id)}>Remove</button>{this.props.todo.text} 
+            <a className="btn btn-danger" onClick={() => this.removeTodo(this.props.id)}>
+                <span className="icon">
+                    <i className="fa fa-trash-o" aria-hidden="true"></i>
+                </span>
+                <span>Remove</span>
+            </a>
+            <span className="todoText">{this.props.todo.text}</span>
         </div> 
         )
     }
